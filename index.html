@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2BLE M — Barbershop & Movil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LANDING SELECTOR -->
+<div id="landing" class="landing-screen">
+  <div class="landing-bg"></div>
+  <div class="landing-content">
+    <div class="logo-main">
+      <span class="logo-2">2</span><span class="logo-ble">BLE</span><span class="logo-m"> M</span>
+    </div>
+    <p class="landing-sub">Elige tu destino</p>
+    <div class="landing-cards">
+      <div class="lcard lcard-barber" onclick="openSection('barber')">
+        <div class="lcard-icon">✂️</div>
+        <div class="lcard-title">BARBERSHOP</div>
+        <div class="lcard-sub">Citas · Turnos · Estilo</div>
+        <div class="lcard-arrow">→</div>
+      </div>
+      <div class="lcard-divider"><span>o</span></div>
+      <div class="lcard lcard-movil" onclick="openSection('movil')">
+        <div class="lcard-icon">📱</div>
+        <div class="lcard-title">MOVIL</div>
+        <div class="lcard-sub">Teléfonos · Reparación</div>
+        <div class="lcard-arrow">→</div>
+      </div>
+    </div>
+    <p class="landing-phone">829-289-4683</p>
+  </div>
+</div>
+
+<!-- ======================== BARBERSHOP ======================== -->
+<div id="barber-section" class="section hidden">
+
+  <!-- NAV -->
+  <nav class="nav nav-barber">
+    <button class="back-btn" onclick="goHome()">← Inicio</button>
+    <div class="nav-logo">✂️ 2BLE M BARBERSHOP</div>
+    <a href="tel:8292894683" class="nav-phone">829-289-4683</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="barber-hero">
+    <div class="barber-hero-content">
+      <div class="bh-tag">Est. Santo Domingo</div>
+      <h1>2BLE M<br><span>BARBER<br>SHOP</span></h1>
+      <p>Cortes profesionales. Ambiente premium. Tu estilo, nuestra pasión.</p>
+      <button class="btn-primary" onclick="showTab('citas')">Reservar Cita</button>
+      <button class="btn-outline" onclick="showTab('turnos')">Ver Turnos</button>
+    </div>
+    <div class="barber-hero-img">
+      <div class="barber-shop-visual">
+        <div class="bsv-stripe red"></div>
+        <div class="bsv-stripe white"></div>
+        <div class="bsv-stripe blue"></div>
+        <div class="pole-icon">💈</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- TABS -->
+  <div class="barber-tabs">
+    <button class="tab active" onclick="showTab('citas')" id="tab-citas">📅 Citas</button>
+    <button class="tab" onclick="showTab('turnos')" id="tab-turnos">🔢 Turnos</button>
+    <button class="tab" onclick="showTab('servicios')" id="tab-servicios">✂️ Servicios</button>
+    <button class="tab" onclick="showTab('galeria')" id="tab-galeria">🖼️ Galería</button>
+  </div>
+
+  <!-- CITAS PANEL -->
+  <div class="tab-panel active" id="panel-citas">
+    <div class="panel-container">
+      <h2 class="panel-title">Reserva tu Cita</h2>
+      <p class="panel-sub">Rellena el formulario y te confirmamos por WhatsApp</p>
+      <div class="form-card">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" id="f-nombre" placeholder="Tu nombre">
+          </div>
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="f-tel" placeholder="809-XXX-XXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Fecha</label>
+            <input type="date" id="f-fecha">
+          </div>
+          <div class="form-group">
+            <label>Hora</label>
+            <select id="f-hora">
+              <option value="">Selecciona</option>
+              <option>9:00 AM</option><option>9:30 AM</option>
+              <option>10:00 AM</option><option>10:30 AM</option>
+              <option>11:00 AM</option><option>11:30 AM</option>
+              <option>12:00 PM</option><option>12:30 PM</option>
+              <option>1:00 PM</option><option>1:30 PM</option>
+              <option>2:00 PM</option><option>2:30 PM</option>
+              <option>3:00 PM</option><option>3:30 PM</option>
+              <option>4:00 PM</option><option>4:30 PM</option>
+              <option>5:00 PM</option><option>5:30 PM</option>
+              <option>6:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Servicio</label>
+          <select id="f-servicio">
+            <option value="">Selecciona un servicio</option>
+            <option>Corte de cabello</option>
+            <option>Corte + Barba</option>
+            <option>Afeitado clásico</option>
+            <option>Diseño de barba</option>
+            <option>Corte infantil</option>
+            <option>Corte + Cejas</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Nota adicional (opcional)</label>
+          <textarea id="f-nota" placeholder="Cuéntanos qué estilo prefieres..."></textarea>
+        </div>
+        <button class="btn-primary btn-full" onclick="reservarCita()">📲 Enviar por WhatsApp</button>
+        <p class="form-note">Te redirigirá a WhatsApp con tu solicitud lista</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TURNOS PANEL -->
+  <div class="tab-panel" id="panel-turnos">
+    <div class="panel-container">
+      <h2 class="panel-title">Turnos en Espera</h2>
+      <p class="panel-sub">Estado en tiempo real — actualizado por el barbero</p>
+
+      <div class="turno-status-bar">
+        <div class="tsb-item">
+          <span class="tsb-num" id="t-espera">4</span>
+          <span class="tsb-label">En espera</span>
+        </div>
+        <div class="tsb-divider"></div>
+        <div class="tsb-item">
+          <span class="tsb-num green" id="t-actual">2</span>
+          <span class="tsb-label">En silla</span>
+        </div>
+        <div class="tsb-divider"></div>
+        <div class="tsb-item">
+          <span class="tsb-num yellow">~25</span>
+          <span class="tsb-label">Min espera</span>
+        </div>
+      </div>
+
+      <div class="turnos-list" id="turnos-list">
+        <div class="turno-item current">
+          <div class="turno-num">#1</div>
+          <div class="turno-info"><strong>Carlos M.</strong><span>Corte + Barba</span></div>
+          <div class="turno-badge green">En silla ✂️</div>
+        </div>
+        <div class="turno-item current">
+          <div class="turno-num">#2</div>
+          <div class="turno-info"><strong>Roberto P.</strong><span>Corte</span></div>
+          <div class="turno-badge green">En silla ✂️</div>
+        </div>
+        <div class="turno-item waiting">
+          <div class="turno-num">#3</div>
+          <div class="turno-info"><strong>Luis F.</strong><span>Afeitado</span></div>
+          <div class="turno-badge yellow">Próximo</div>
+        </div>
+        <div class="turno-item waiting">
+          <div class="turno-num">#4</div>
+          <div class="turno-info"><strong>Miguel A.</strong><span>Corte infantil</span></div>
+          <div class="turno-badge">~15 min</div>
+        </div>
+        <div class="turno-item waiting">
+          <div class="turno-num">#5</div>
+          <div class="turno-info"><strong>José R.</strong><span>Corte + Cejas</span></div>
+          <div class="turno-badge">~30 min</div>
+        </div>
+        <div class="turno-item waiting">
+          <div class="turno-num">#6</div>
+          <div class="turno-info"><strong>Andres T.</strong><span>Diseño barba</span></div>
+          <div class="turno-badge">~45 min</div>
+        </div>
+      </div>
+
+      <div class="turno-join-box">
+        <h3>¿Quieres un turno?</h3>
+        <p>Llámanos o escríbenos por WhatsApp y te añadimos a la lista</p>
+        <a href="https://wa.me/18292894683?text=Hola%2C%20quiero%20un%20turno%20en%202BLE%20M%20Barbershop" class="btn-primary" target="_blank">📲 Pedir turno por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS PANEL -->
+  <div class="tab-panel" id="panel-servicios">
+    <div class="panel-container">
+      <h2 class="panel-title">Nuestros Servicios</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="sc-icon">✂️</div>
+          <div class="sc-name">Corte de Cabello</div>
+          <div class="sc-desc">Corte clásico o moderno a tu gusto</div>
+          <div class="sc-price">RD$200+</div>
+        </div>
+        <div class="service-card">
+          <div class="sc-icon">🧔</div>
+          <div class="sc-name">Corte + Barba</div>
+          <div class="sc-desc">Combo completo de estilo</div>
+          <div class="sc-price">RD$350+</div>
+        </div>
+        <div class="service-card">
+          <div class="sc-icon">🪒</div>
+          <div class="sc-name">Afeitado Clásico</div>
+          <div class="sc-desc">Con navaja y toalla caliente</div>
+          <div class="sc-price">RD$250+</div>
+        </div>
+        <div class="service-card">
+          <div class="sc-icon">💈</div>
+          <div class="sc-name">Diseño de Barba</div>
+          <div class="sc-desc">Perfilado y diseño profesional</div>
+          <div class="sc-price">RD$150+</div>
+        </div>
+        <div class="service-card">
+          <div class="sc-icon">👦</div>
+          <div class="sc-name">Corte Infantil</div>
+          <div class="sc-desc">Para los más pequeños del hogar</div>
+          <div class="sc-price">RD$150+</div>
+        </div>
+        <div class="service-card">
+          <div class="sc-icon">👁️</div>
+          <div class="sc-name">Diseño de Cejas</div>
+          <div class="sc-desc">Perfilado y definición</div>
+          <div class="sc-price">RD$100+</div>
+        </div>
+      </div>
+
+      <div class="horario-card">
+        <h3>⏰ Horario</h3>
+        <div class="horario-grid">
+          <span>Lunes – Viernes</span><span>9:00 AM – 7:00 PM</span>
+          <span>Sábado</span><span>8:00 AM – 7:00 PM</span>
+          <span>Domingo</span><span>9:00 AM – 3:00 PM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALERIA PANEL -->
+  <div class="tab-panel" id="panel-galeria">
+    <div class="panel-container">
+      <h2 class="panel-title">Nuestra Barbería</h2>
+      <div class="galeria-grid">
+        <div class="galeria-item gi-wide">
+          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" alt="Barbería interior">
+          <div class="gi-label">Interior Premium</div>
+        </div>
+        <div class="galeria-item">
+          <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=80" alt="Corte">
+          <div class="gi-label">Cortes de Moda</div>
+        </div>
+        <div class="galeria-item">
+          <img src="https://images.unsplash.com/photo-1599351431613-18ef1fdd27e3?w=400&q=80" alt="Barba">
+          <div class="gi-label">Diseño de Barba</div>
+        </div>
+        <div class="galeria-item">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=80" alt="Estilo">
+          <div class="gi-label">Estilo Clásico</div>
+        </div>
+        <div class="galeria-item">
+          <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&q=80" alt="Fade">
+          <div class="gi-label">Fade Profesional</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER BARBER -->
+  <footer class="footer footer-barber">
+    <div class="footer-content">
+      <div class="footer-logo">✂️ 2BLE M BARBERSHOP</div>
+      <div class="footer-info">
+        <a href="tel:8292894683">📞 829-289-4683</a>
+        <a href="https://wa.me/18292894683" target="_blank">💬 WhatsApp</a>
+        <span>📍 Santo Domingo, RD</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ======================== MOVIL ======================== -->
+<div id="movil-section" class="section hidden">
+
+  <!-- NAV -->
+  <nav class="nav nav-movil">
+    <button class="back-btn" onclick="goHome()">← Inicio</button>
+    <div class="nav-logo">📱 2BLE M MOVIL</div>
+    <a href="tel:8292894683" class="nav-phone">829-289-4683</a>
+  </nav>
+
+  <!-- HERO MOVIL -->
+  <header class="movil-hero">
+    <div class="movil-hero-content">
+      <div class="mh-tag">Teléfonos & Reparación</div>
+      <h1>2BLE M<br><span>MOVIL</span></h1>
+      <p>Los mejores equipos al mejor precio. Reparación profesional de celulares.</p>
+      <div class="mh-badges">
+        <span class="badge">📱 Venta</span>
+        <span class="badge">🔧 Reparación</span>
+        <span class="badge">✅ Garantía</span>
+      </div>
+    </div>
+    <div class="movil-hero-phones">
+      <div class="phone-float p1">📱</div>
+      <div class="phone-float p2">📲</div>
+      <div class="phone-float p3">💻</div>
+    </div>
+  </header>
+
+  <!-- SEARCH & FILTER -->
+  <div class="movil-controls">
+    <input type="text" id="search-phone" placeholder="🔍 Buscar modelo..." oninput="filterPhones()">
+    <div class="filter-btns">
+      <button class="fbtn active" onclick="filterBrand('all', this)">Todos</button>
+      <button class="fbtn" onclick="filterBrand('samsung', this)">Samsung</button>
+      <button class="fbtn" onclick="filterBrand('xiaomi', this)">Xiaomi</button>
+      <button class="fbtn" onclick="filterBrand('tecno', this)">Tecno</button>
+      <button class="fbtn" onclick="filterBrand('zte', this)">ZTE</button>
+      <button class="fbtn" onclick="filterBrand('oukitel', this)">Oukitel</button>
+      <button class="fbtn" onclick="filterBrand('otros', this)">Otros</button>
+    </div>
+  </div>
+
+  <!-- CATALOGO -->
+  <div class="catalogo-container">
+    <h2 class="panel-title">Catálogo de Teléfonos</h2>
+    <div class="phones-grid" id="phones-grid"></div>
+  </div>
+
+  <!-- REPARACION -->
+  <div class="reparacion-section">
+    <div class="panel-container">
+      <h2 class="panel-title">🔧 Reparación de Celulares</h2>
+      <p class="panel-sub">Diagnóstico gratis · Servicio rápido · Repuestos originales</p>
+      <div class="rep-grid">
+        <div class="rep-card"><div class="rep-icon">📱</div><div>Pantallas rotas</div></div>
+        <div class="rep-card"><div class="rep-icon">🔋</div><div>Cambio de batería</div></div>
+        <div class="rep-card"><div class="rep-icon">💧</div><div>Daño por agua</div></div>
+        <div class="rep-card"><div class="rep-icon">🔌</div><div>Puerto de carga</div></div>
+        <div class="rep-card"><div class="rep-icon">📷</div><div>Cámara dañada</div></div>
+        <div class="rep-card"><div class="rep-icon">🔊</div><div>Altavoz/Micrófono</div></div>
+        <div class="rep-card"><div class="rep-icon">🖥️</div><div>Software/Flash</div></div>
+        <div class="rep-card"><div class="rep-icon">🔑</div><div>Desbloqueo</div></div>
+      </div>
+      <a href="https://wa.me/18292894683?text=Hola%2C%20necesito%20reparar%20mi%20celular" class="btn-primary" target="_blank" style="display:inline-block;margin-top:2rem">📲 Consultar por WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- MODAL TELEFONO -->
+  <div class="phone-modal hidden" id="phone-modal">
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal-box" id="modal-box"></div>
+  </div>
+
+  <!-- FOOTER MOVIL -->
+  <footer class="footer footer-movil">
+    <div class="footer-content">
+      <div class="footer-logo">📱 2BLE M MOVIL</div>
+      <div class="footer-info">
+        <a href="tel:8292894683">📞 829-289-4683</a>
+        <a href="https://wa.me/18292894683" target="_blank">💬 WhatsApp</a>
+        <span>📍 Santo Domingo, RD</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
